@@ -31,7 +31,7 @@ function NavigationBar() {
               <FaUser />
             </Link>
 
-            <Link to="/appointments" className="nav-icon book-icon">
+            <Link to="/appointment" className="nav-icon book-icon">
               <FaCalendarAlt />
             </Link>
           </div>
