@@ -25,7 +25,7 @@ function HeroSection() {
 
                     <div className="hero-buttons">
                         <Button
-                            href="/appointments"
+                            href="/appointment"
                             className="primary-button"
                         >
                             Book an Appointment
