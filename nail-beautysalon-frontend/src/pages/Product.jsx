@@ -128,11 +128,7 @@ function Product() {
                                 product.stock <= product.lowStockThreshold;
 
                             return (
-                                <Col
-                                    key={product.id}
-                                    md={4}
-                                    className="mb-4"
-                                >
+                                <Col key={product.id} xs={12} sm={6} md={4} className="mb-4">
 
                                     <Card className="product-card">
 
