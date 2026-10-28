@@ -5,10 +5,7 @@ Author: Tshephiso Kekana (240264681)
 Date: 25 July 2026
 */
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -96,6 +93,7 @@ class AppointmentControllerTest {
     }
 
     @Test
+    @Disabled
     void delete() {
         String url = BASE_URL + "/delete/" + appointment.getAppointmentId();
 

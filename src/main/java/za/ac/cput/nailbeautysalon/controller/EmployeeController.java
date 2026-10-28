@@ -1,7 +1,7 @@
 package za.ac.cput.nailbeautysalon.controller;
 /* EmployeeController.java
 EmployeeController class
-Author: Vincent Kanzi(221188932)
+Author: Vincent Kanzi(2)
 Date: 14 July 2026
 */
 
@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.nailbeautysalon.domain.Employee;
 import za.ac.cput.nailbeautysalon.service.EmployeeService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
     private EmployeeService service;
 
@@ -27,7 +29,7 @@ public class EmployeeController {
         return service.create(employee);
     }
 
-    @PostMapping("/read/{userId}")
+    @GetMapping("/read/{userId}")
     public Employee read(@PathVariable String userId){
         return service.read(userId);
     }

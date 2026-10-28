@@ -1,7 +1,7 @@
 package za.ac.cput.nailbeautysalon.domain;
 /* User.java
 User class
-Author: Vincent Kanzi(221188932)
+Author: Vincent Kanzi()
 Date: 21 June 2026
 */
 import jakarta.persistence.*;

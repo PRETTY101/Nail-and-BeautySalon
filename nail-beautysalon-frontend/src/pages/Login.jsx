@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
+import { useNavigate, Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../context/AuthContext';
 
 function Login() {
@@ -12,93 +11,74 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        setError('');
+        setLoading(true);
 
-        // Temporary user for frontend testing.
-        // This will later come from the Spring Boot API.
-        const user = {
-            id: 1,
-            name: 'Vincent',
-            email: email,
-            role: 'EMPLOYEE',
-        };
-
-        login(user);
-
-        navigate('/employee/dashboard');
+        try {
+            const userData = await login(email, password);
+            if (userData.role === 'ROLE_ADMIN') navigate('/admin');
+            else if (userData.role === 'ROLE_EMPLOYEE') navigate('/employee/dashboard');
+            else navigate('/customer/dashboard');
+        } catch (err) {
+            setError(err.response?.data?.message || 'Invalid email or password');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <main className="auth-page">
-
-            <Container>
-
-                <div className="auth-card">
-
-                    <div className="auth-header">
-
-                        <p className="auth-eyebrow">
-                            NAIL & BEAUTY
-                        </p>
-
-                        <h1>Welcome back</h1>
-
-                        <p>
-                            Sign in to access your account.
-                        </p>
-
-                    </div>
-
-                    <Form onSubmit={handleSubmit}>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>
-                                Email address
-                            </Form.Label>
-
-                            <Form.Control
-                                type="email"
-                                value={email}
-                                onChange={(event) =>
-                                    setEmail(event.target.value)
-                                }
-                                placeholder="Enter your email"
-                                required
-                            />
-                        </Form.Group>
-
-                        <Form.Group className="mb-4">
-                            <Form.Label>
-                                Password
-                            </Form.Label>
-
-                            <Form.Control
-                                type="password"
-                                value={password}
-                                onChange={(event) =>
-                                    setPassword(event.target.value)
-                                }
-                                placeholder="Enter your password"
-                                required
-                            />
-                        </Form.Group>
-
-                        <Button
-                            type="submit"
-                            className="auth-button w-100"
-                        >
-                            Sign In
-                        </Button>
-
-                    </Form>
-
+        <div className="auth-page">
+            <div className="auth-card">
+                <div className="auth-header">
+                    <p className="auth-eyebrow">NAIL & BEAUTY</p>
+                    <h1>Welcome back</h1>
+                    <p>Sign in to access your account.</p>
                 </div>
 
-            </Container>
+                {error && <Alert variant="danger">{error}</Alert>}
 
-        </main>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter your email"
+                            required
+                            disabled={loading}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-4">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter your password"
+                            required
+                            disabled={loading}
+                        />
+                    </Form.Group>
+
+                    <div className="auth-button-wrapper">
+                        <Button type="submit" className="auth-button" disabled={loading}>
+                            {loading ? 'Logging in...' : 'Log In'}
+                        </Button>
+                    </div>
+
+                    <p className="auth-footer">
+                        New customer? <Link to="/signup">Create an account</Link>
+                    </p>
+                </Form>
+            </div>
+        </div>
     );
 }
 

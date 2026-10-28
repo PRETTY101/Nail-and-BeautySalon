@@ -7,20 +7,12 @@ Date: 22 June 2026
 */
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
 import java.time.LocalDateTime;
-@Entity
+
 public class Appointment {
-    @Id
     private String appointmentId;
     private LocalDateTime dateTime;
     private String serviceSelected;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
     private Address address;
     private String notes;
     private String status;
@@ -62,20 +54,20 @@ public class Appointment {
         return appointmentId;
     }
 
-
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Appointment{" +
-                "appointmentId='" + appointmentId + '\'' +
+                "address=" + address +
+                ", appointmentId='" + appointmentId + '\'' +
                 ", dateTime=" + dateTime +
                 ", serviceSelected='" + serviceSelected + '\'' +
-                ", address=" + address +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
 
-    public static class Builder {
+
+public static class Builder {
     private String appointmentId;
     private LocalDateTime dateTime;
     private String serviceSelected;

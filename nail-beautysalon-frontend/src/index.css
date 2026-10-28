@@ -1714,3 +1714,103 @@ code {
     }
 }
 
+
+
+/* =========================================
+   AUTHENTICATION PAGES (LOGIN & SIGNUP)
+   ========================================= */
+
+/* The background of the whole page */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%), url('/Product_Background.png') center / cover fixed; /* Soft, premium background */
+    padding: 20px;
+}
+
+/* The white card */
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    width: 100%;
+    max-width: 450px; /* Prevents the card from getting too wide */
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #d4af37; /* Gold/Salon color */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.auth-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.auth-header p {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+/* Styling the input fields */
+.auth-card .form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.auth-card .form-control:focus {
+    border-color: #d4af37; /* Gold highlight */
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+    background-color: white;
+}
+
+.auth-card .form-label {
+    font-weight: 500;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* The Button */
+.auth-button {
+    background-color: #333; /* Dark sleek color */
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    /* Remove w-100 from the JSX if you want it shorter, 
+       or keep w-100 here to make it span the card width */
+}
+
+.auth-button:hover {
+    background-color: #d4af37; /* Gold on hover */
+    color: white;
+}
+
+.auth-card a {
+    color: #d4af37;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}

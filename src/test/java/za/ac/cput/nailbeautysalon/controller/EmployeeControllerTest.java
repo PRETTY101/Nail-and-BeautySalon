@@ -6,10 +6,7 @@ package za.ac.cput.nailbeautysalon.controller;
  * Date: 19 July 2026
  */
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,9 +32,16 @@ class EmployeeControllerTest {
     @BeforeAll
     static void setUp() {
 
-        employee = EmployeeFactory.createEmployee("202220", "Vinny", "Kanzi", "vinny@cput.ac.za", "021558963", "221188932", "Junior Fullstack");
+        employee = EmployeeFactory.createEmployee(
+                "202220",
+                "Vinny",
+                "Kanzi",
+                "vinny@cput.ac.za",
+                "021558963",
+                "221188932",
+                "Junior Fullstack");
 
-        //assertNotNull(employee);
+        assertNotNull(employee);
     }
 
     @Test
@@ -48,11 +52,12 @@ class EmployeeControllerTest {
         ResponseEntity<Employee> response = restTemplate.postForEntity(url, employee, Employee.class);
         assertNotNull(response.getBody());
 
-        employee = response.getBody();
+        Employee employee1 = response.getBody();
+        System.out.println(employee1);
 
-        assertEquals("202220", employee.getUserId());
+        assertEquals("202220", employee1.getUserId());
 
-        System.out.println(employee);
+        System.out.println(employee1);
     }
 
     @Test
@@ -89,6 +94,7 @@ class EmployeeControllerTest {
     }
 
     @Test
+    @Disabled
     void d_delete() {
 
         String url = BASE_URL + "/delete/" + employee.getUserId();

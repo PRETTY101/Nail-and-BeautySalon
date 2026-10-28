@@ -2,9 +2,12 @@ package za.ac.cput.nailbeautysalon.domain;
 /* AddressId.java
    Author: M Hlaba (223031437)
    Date: 22 June 2026 */
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Embeddable
 public class AddressId implements Serializable {
     private String streetNumber;
     private String streetName;

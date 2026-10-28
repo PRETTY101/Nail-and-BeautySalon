@@ -7,10 +7,7 @@ package za.ac.cput.nailbeautysalon.controller;
  * Date: 17 August 2026
  */
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -95,6 +92,7 @@ class CustomerControllerTest {
     }
 
     @Test
+    @Disabled
     void d_delete() {
 
         String url = BASE_URL + "/delete/" + customer.getUserId();

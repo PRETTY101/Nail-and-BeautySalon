@@ -22,7 +22,14 @@ class EmployeeServiceTest {
     @Autowired
     private EmployeeService service;
 
-    private Employee employee = EmployeeFactory.createEmployee("221188932", "Vee", "Kanzi", "vee@mycput.ac.za", "021556894", "2258", "Developer");
+    private Employee employee = EmployeeFactory.createEmployee(
+            "221188932",
+            "Vee",
+            "Kanzi",
+            "vee@mycput.ac.za",
+            "021556894",
+            "2258",
+            "Developer");
 
     @Test
     void a_create() {

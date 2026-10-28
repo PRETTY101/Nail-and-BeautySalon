@@ -1,7 +1,7 @@
 package za.ac.cput.nailbeautysalon.domain;
 /* Employee.java
 Employee class
-Author: Vincent Kanzi(221188932)
+Author: Vincent Kanzi(2)
 Date: 21 June 2026
 */
 
